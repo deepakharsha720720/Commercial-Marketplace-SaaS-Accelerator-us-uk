@@ -9,6 +9,7 @@
 	  <RootNamespace>Marketplace.SaaS.Accelerator.AdminSite</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Microsoft.Marketplace.Saas.Web' " />
   <ItemGroup>
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\lib\bootstrap\LICENSE" />

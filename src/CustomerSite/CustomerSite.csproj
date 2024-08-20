@@ -9,6 +9,7 @@
 	  <RootNamespace>Marketplace.SaaS.Accelerator.CustomerSite</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Microsoft.MarketPlace.SaasKit.Web' " />
   <ItemGroup>
     <Compile Remove="Context\**" />
     <Compile Remove="wwwroot\lib\bootstrap\4.4.1\**" />

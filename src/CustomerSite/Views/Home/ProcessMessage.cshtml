@@ -4,21 +4,32 @@
     @{
         //ViewData["Title"] = "Home";
     }*@
-<div class="container">
-    <form method="post">
-        <div class="cm-panel-default mt40">
-            <div class="p-3">
-                <p>
-                    Processing your request.
-                </p>
-                <p>
-                    Updated status of the activity is available in the subscription list.
-                </p>
-            </div>
+<div>
+    <div class="card-body card-feedbck">
+        <p class="exp-txt">How was your experience?</p>
+        <div>
+            <a href="https://forms.office.com/r/4txEFEU7Ax" target="_blank"><button class="feedbck-btn">Give us feedback</button></a>
+            <img class="pull-right fdbk-img" src="~/feedback.png" />
         </div>
-        <div class="text-end">
-            <button type="submit" asp-action="Subscriptions" class="cm-button-default mt40 text-end">Go to Subscription List</button>
+    </div>
+    <div class="container custom-card card-align">
+        <div class="">
+            <form method="post">
+                <div class="cm-panel-default mt40 req-background">
+                    <div class="p-3">
+                        <p class="req-txt">
+                            Your request is being processed
+                        </p>
+                        <p class="status-txt">
+                            You may view the status of the activity in the subscription list.
+                        </p>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <button type="submit" asp-action="Subscriptions" class="cm-button-default mt40 text-left subs-button sub-list-btn">Go to Subscription List</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 

@@ -8,11 +8,11 @@
 }
 @if (!Model.ShowWelcomeScreen)
 {
-    <div class="container" id="divHome">
+    <div class="container custom-card card-margin" id="divHome">
         <form method="post" id="frmIndex">
 
             <div class="text-white mt20">
-                <span class="cm-section-heading">Subscription Details</span>
+                <span class="text-subs">Subscription Details</span>
             </div>
             @if (Model != null && !string.IsNullOrEmpty(Model.ErrorMessage))
             {
@@ -22,62 +22,56 @@
             }
             else
             {
-                <div class="cm-panel-default mt20">
+                <div class="cm-panel-default mt20 inside-card">
                     <dl class="row text-left">
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Customer Email")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.CustomerEmailAddress)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Customer Name ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.CustomerName)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("ID ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.Id)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Name ")
                         </dt>
-                        <dd class="col-sm-9 p-2">
+                        <dd class="col-sm-9 p-2 txt-r-righ">
                             @Html.DisplayFor(model => model.Name)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Status ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.SubscriptionStatus)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
-                            @Html.DisplayName("Offer Name ")
-                        </dt>
-                        <dd class="col-sm-9 p-2 p10">
-                            @Html.DisplayFor(model => model.OfferId)
-                        </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Plan ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.PlanId)
                         </dd>
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Purchaser Email ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.Purchaser.EmailId)
                             @Html.HiddenFor(model => model.Purchaser.EmailId)
                         </dd>
 
-                        <dt class="col-sm-3 p-2 p10">
+                        <dt class="col-sm-3 p-2 p10 txt-r-lef">
                             @Html.DisplayName("Azure Tenant ID ")
                         </dt>
-                        <dd class="col-sm-9 p-2 p10">
+                        <dd class="col-sm-9 p-2 p10 txt-r-righ">
                             @Html.DisplayFor(model => model.Purchaser.TenantId)
                             @Html.HiddenFor(model => model.Purchaser.TenantId)
                         </dd>
@@ -187,19 +181,21 @@
 
                     </dl>
                 </div>
-                <div class="text-end">
+                <div class="text-left">
                     @if (Model.SubscriptionStatus == SubscriptionStatusEnumExtension.Subscribed)
                     {
-                        <button type="submit" asp-action="SubscriptionOperation" asp-route-subscriptionId="@Model.Id" asp-route-planId="@Model.PlanId" asp-route-operation="Deactivate" class="cm-button-danger text-right">Unsubscribe</button>
-                        <button type="submit" asp-action="Subscriptions" class="cm-button-default text-end">Go to Subscription List</button>
+                        @* Commenting as part of Azure Landing Page Changes
+                            <button type="submit" asp-action="SubscriptionOperation" asp-route-subscriptionId="@Model.Id" asp-route-planId="@Model.PlanId" asp-route-operation="Deactivate" class="cm-button-danger text-right">Unsubscribe</button>
+                        *@
+                        <button type="submit" asp-action="Subscriptions" class="cm-button-default text-right">Go to Subscription List</button>
                     }
                     @if (Model.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && Model.IsAutomaticProvisioningSupported == true)
                     {
-                        <a onclick="SubscriptionOperation('@Model.Id','@Model.PlanId','Activate')" id="btnActive" class="cm-button-default text-end">Activate</a>
+                        <a onclick="SubscriptionOperation('@Model.Id','@Model.PlanId','Activate')" id="btnActive" class="cm-button-default text-right">Activate</a>
                     }
                     @if (Model.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && Model.IsAutomaticProvisioningSupported == false)
                     {
-                        <a onclick="SubscriptionOperation('@Model.Id','@Model.PlanId','Activate')" id="btnActive" class="cm-button-default text-end" style="text-decoration:none;">Subscribe</a>
+                        <a onclick="SubscriptionOperation('@Model.Id','@Model.PlanId','Activate')" id="btnActive" class="cm-button-default text-left subs-button btn-font">Subscribe</a>
                     }
                 </div>
             }
@@ -209,38 +205,40 @@
 else
 {
     <div class="pt-5">
-        <div class="card p-3 ">
+        <div class="card p-5 custom-card card-height">
             <div class="text-center">
-                <h1 class="display-4">Welcome</h1>
+                <h2 class="display-4 txt-wlc">Welcome</h2>
             </div>
-            <div class="text-left">
-                <p>
+            <div class="text-left txt-generic">
+                <p class="custom-padding">
                     Get started with integrating your <b> Software as a Service (SaaS) </b> solution with the <b> SaaS fulfillment APIs version 2 in Microsoft commercial marketplace. </b>
                 </p>
-                <p><a href="https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2" target="_blank">Click here </a><span>for the API documentation.</span> </p>
+                <p class="top-margin"><a href="https://docs.microsoft.com/en-us/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2" target="_blank">Click here </a><span>for the API documentation.</span> </p>
             </div>
-            <div>
-                <b>To purchase this SaaS offer:</b>
-                <ul>
-                    <li>Search for resources of type <b> Software as a Service (SaaS) </b></li>
-                    <li>Search for your offer</li>
-                    <li>Click <b> Create</b> to subscribe to the offer</li>
-                    <li>Click <b>Configure Account </b> after the subscription created</li>
+            <div class="top-mrgn">
+                <b class="text-purchase">To purchase this SaaS offer:</b>
+                <ul class="left-mg txt-generic">
+                    <li class="top-margin">Search for resources of type <b> Software as a Service (SaaS) </b></li>
+                    <li class="top-margin">Search for your offer</li>
+                    <li class="top-margin">Click <b> Create</b> to subscribe to the offer</li>
+                    <li class="top-margin">Click <b>Configure Account </b> after the subscription created</li>
                 </ul>
             </div>
         </div>
     </div>
-}
-<script type="text/javascript">
+    <script>$(document).ready(function () {
+            $("#home").attr("class", function (i, origValue) {
+                return origValue + " active";
+            });
+        });</script>
 
-    function SubscriptionOperation(subscriptionId, planId, operation) {
+}
+<script type="text/javascript">function SubscriptionOperation(subscriptionId, planId, operation) {
         if (validate()) {
             var formobject = $('#frmIndex').serialize();
-            var csrftoken = $('input[name="__RequestVerificationToken"]').val();
             $.ajax({
                 url: '/Home/SubscriptionOperation',
                 type: 'POST',
-                headers: { RequestVerificationToken: csrftoken },
                 data: formobject + "&subscriptionId=" + subscriptionId + "&planId=" + planId + "&operation=" + operation,
                 cache: false,
                 success: function (result) {
@@ -270,5 +268,4 @@ else
                 return valid = false;
         });
         return valid;
-    }
-</script>
+    }</script>

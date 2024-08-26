@@ -32,20 +32,20 @@
                             {
                                 <table id="table" class="table table-bordered dt-responsive cm-table mt20" width="100%" cellspacing="0">
                                     <thead class="cm-table-head tbl-bckgrnd ">
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Offer</th>
-                                            <th>Plan</th>
-                                            <th>Quantity</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                        <tr class="">
+                                            <th class="tbl-txt ">Name</th>
+                                            <th class="tbl-txt ">Offer</th>
+                                            <th class="tbl-txt ">Plan</th>
+                                            <th class="tbl-txt ">Quantity</th>
+                                            <th class="tbl-txt ">Status</th>
+                                            <th class="tbl-txt ">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="">
                                         @for (var i = 0; i < Model.Subscriptions.Count; i++)
                                         {
                                             var subscription = Model.Subscriptions[i];
-                                            <tr>
+                                            <tr class="alt-color row-txt ">
                                                 <td class="text-left">
                                                     @Html.HiddenFor(s => s.Subscriptions[i].Id)
                                                     @Html.HiddenFor(s => s.Subscriptions[i].PlanId)
@@ -67,7 +67,7 @@
                                                 <td class="text-left  cm-ellipsis">
                                                     <div class="nav-item dropdown">
                                                         <a class="nav-link dropdown cm-link-button" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars"></i></a>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                                        <div class="dropdown-menu">
                                                             @if (subscription.SubscriptionStatus == SubscriptionStatusEnumExtension.Subscribed)
                                                             {
                                                                 <a class="dropdown-item cm-dropdown-option" asp-action="ViewSubscription" asp-route-subscriptionId="@Model.Subscriptions[i].Id" asp-route-planId="@Model.Subscriptions[i].PlanId" asp-route-operation="Deactivate">Unsubscribe</a>
@@ -76,22 +76,23 @@
                                                                     <a class="dropdown-item cm-dropdown-option" onclick="ViewSubscriptionDetail('@Model.Subscriptions[i].Id')" data-bs-toggle="modal" data-bs-target="#myModal">Change Plan</a>
                                                                     @if (subscription.IsPerUserPlan)
                                                                     {
-                                                                        <a class="dropdown-item cm-dropdown-option" onclick="ViewSubscriptionQuantityDetail('@Model.Subscriptions[i].Id')" data-target="#Mymode">Change Quantity</a>
-                                                                        <a class="dropdown-item cm-dropdown-option" target="_blank" href="@Model.SaaSAppUrl" title="Click here to go to SaaS App">SaasApp</a>
+                                                                        <a class="dropdown-item cm-dropdown-option" onclick="ViewSubscriptionQuantityDetail('@Model.Subscriptions[i].Id')" data-bs-toggle="modal" data-bs-target="#myModal">Change Quantity</a>
                                                                     }
+                                                                    <a class="dropdown-item cm-dropdown-option" target="_blank" href="@Model.SaaSAppUrl" title="Click here to go to SaaS App">SaasApp</a>
                                                                 }
-                                                                @if (subscription.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && subscription.IsAutomaticProvisioningSupported == true)
-                                                                {
-                                                                    <a class="dropdown-item cm-dropdown-option" asp-action="ViewSubscription" asp-route-subscriptionId="@Model.Subscriptions[i].Id" asp-route-planId="@Model.Subscriptions[i].PlanId" asp-route-operation="Activate">Activate</a>
-                                                                }
-                                                                @if (subscription.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && subscription.IsAutomaticProvisioningSupported == false)
-                                                                {
-                                                                    <a class="dropdown-item cm-dropdown-option" asp-action="ViewSubscription" asp-route-subscriptionId="@Model.Subscriptions[i].Id" asp-route-planId="@Model.Subscriptions[i].PlanId" asp-route-operation="Activate">Subscribe</a>
-                                                                }
-                                                                <a class="dropdown-item cm-dropdown-option" data-target="#myModal" onclick="ViewSubscriptionlogdetailsById('@Model.Subscriptions[i].Id')">Activity Log</a>
+                                                            }
+                                                            @if (subscription.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && subscription.IsAutomaticProvisioningSupported == true)
+                                                            {
+                                                                <a class="dropdown-item cm-dropdown-option" asp-action="ViewSubscription" asp-route-subscriptionId="@Model.Subscriptions[i].Id" asp-route-planId="@Model.Subscriptions[i].PlanId" asp-route-operation="Activate">Activate</a>
+                                                            }
+                                                            @if (subscription.SubscriptionStatus == SubscriptionStatusEnumExtension.PendingFulfillmentStart && subscription.IsAutomaticProvisioningSupported == false)
+                                                            {
+                                                                <a class="dropdown-item cm-dropdown-option" asp-action="ViewSubscription" asp-route-subscriptionId="@Model.Subscriptions[i].Id" asp-route-planId="@Model.Subscriptions[i].PlanId" asp-route-operation="Activate">Subscribe</a>
+                                                            }
+                                                            <a class="dropdown-item cm-dropdown-option" data-target="#myModal" onclick="ViewSubscriptionlogdetailsById('@Model.Subscriptions[i].Id')">Activity Log</a>
 
 
-                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

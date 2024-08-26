@@ -7,6 +7,13 @@
 <div class="text-center">
     <div class="container">
         <br />
+        <div class="card-body card-feedbck">
+            <p class="exp-txt">How was your experience?</p>
+            <div>
+                <a href="https://forms.office.com/r/4txEFEU7Ax" target="_blank"><button class="feedbck-btn">Give us feedback</button></a>
+                <img class="pull-right fdbk-img" src="~/feedback.png" />
+            </div>
+        </div>
         @if (!Model.IsSuccess && !string.IsNullOrEmpty(Model.ErrorMessage))
         {
             <div class="alert alert-danger">
@@ -15,15 +22,15 @@
         }
         <form method="post">
             <div>
-                <div class="card-body">
+                <div class="card-body custom-card subs-mrg-wdth ">
                     <div>
-                        <div class="text-start">
-                            <span class="cm-section-heading">Subscriptions</span>
+                        <div class="text-left">
+                            <span class="subs-txt">Subscriptions</span>
                         </div>
                         @if (Model.Subscriptions.Count() > 0)
                         {
-                            <table id="table" class="table table-bordered dt-responsive cm-table mt20">
-                                <thead class="cm-table-head">
+                            <table id="table" class="table table-bordered dt-responsive cm-table mt20" width="100%" cellspacing="0">
+                                <thead class="cm-table-head tbl-bckgrnd ">
                                     <tr>
                                         <th>Name</th>
                                         <th>Offer</th>
@@ -112,8 +119,8 @@
 
             <!-- Button trigger modal -->
             @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                    Launch demo modal
-                </button> *@
+                Launch demo modal
+            </button> *@
             <p></p>
             <!-- Modal -->
             <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -125,11 +132,11 @@
                         </div>
                         @* <div class="modal-body">
 
-                            </div>
-                            <div class="modal-footer">
+                        </div>
+                        <div class="modal-footer">
 
 
-                            </div> *@
+                        </div> *@
                     </div>
                 </div>
             </div>

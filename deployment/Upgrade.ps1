@@ -103,9 +103,11 @@ BEGIN
 END;
 GO"
 
-Invoke-Sqlcmd -query $compatibilityScript -ServerInstance $Server -database $Database -Username $User -Password $Pass
+$dbaccesstoken = (Get-AzAccessToken -ResourceUrl https://database.windows.net).Token
+Invoke-Sqlcmd -query $compatibilityScript -ServerInstance $Server -database $Database -AccessToken $dbaccesstoken
+#Invoke-Sqlcmd -query $compatibilityScript -ServerInstance $Server -database $Database -Username $User -Password $Pass
 Write-host "## Ran compatibility script against database"
-Invoke-Sqlcmd -inputFile script.sql -ServerInstance $Server -database $Database -Username $User -Password $Pass
+Invoke-Sqlcmd -inputFile script.sql -ServerInstance $Server -database $Database -AccessToken $dbaccesstoken
 Write-host "## Ran migration against database"	
 
 Remove-Item -Path ../src/AdminSite/appsettings.Development.json

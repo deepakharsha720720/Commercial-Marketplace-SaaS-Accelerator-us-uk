@@ -1,4 +1,4 @@
-﻿body {
+body {
     font-family: 'Segoe UI', 'sans-serif' !important;
     color: black !important;
     font-size: 16px !important;
@@ -21,9 +21,13 @@
 
 .cm-menu-bar {
     background-color: #FFFFFF !important;
-    margin-top: -129px;
+    margin-top: -79px;
 }
 
+.cm-menu-bar-signin {
+    background-color: #FFFFFF !important;
+    margin-top: 50px;
+}
 .cm-signin {
     color: #ffffff !important;
     font-size: 16px;
@@ -329,10 +333,37 @@
     background-color: #FFFFFF;
     font-size: 14px !important;
     color: black !important;
+    height: 9rem;
+    line-height: 20px;
+    box-shadow: 0px -4px 8px rgba(96, 110, 116, 0.25);
+}
+.cm-push {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    font-size: 14px !important;
+    color: black !important;
     height: 78px;
     line-height: 20px;
     box-shadow: 0px -4px 8px rgba(96, 110, 116, 0.25);
 }
+
+/*.text-footer {
+    font-family: 'Gilroy-light', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    margin-left: -40px;
+    margin-top: 31px;
+}
+
+.content {
+    min-height: 150vh;*/ /* Ensures enough content for scrolling */
+/*}*/
 
 a.cm-dropdown-option {
     background: transparent !important;
@@ -443,7 +474,7 @@ a.cm-dropdown-option {
     margin-top: -10px;
 }
 
-.text-footer {
+/*.text-footer {
     font-family: 'Gilroy-light',sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -452,7 +483,7 @@ a.cm-dropdown-option {
     text-align: center;
     margin-left: -40px;
     margin-top: 31px;
-}
+}*/
 
 .help-mg {
     margin-top: 15px;
@@ -660,6 +691,7 @@ a.cm-dropdown-option {
     clear: both;
     min-height: 100px;
 }
+
 
 tr.alt-color:nth-child(odd) {
     background: #F5F6F7;

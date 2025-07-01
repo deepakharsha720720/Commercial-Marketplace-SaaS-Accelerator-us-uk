@@ -26,4 +26,14 @@ public enum TermUnitEnum
     /// The Yearly.
     /// </summary>
     P3Y,
+
+    /// <summary>More actions
+    /// Four Year term.
+    /// </summary>
+    P4Y,
+
+    /// <summary>
+    /// Five Year term.
+    /// </summary>
+    P5Y,
 }
